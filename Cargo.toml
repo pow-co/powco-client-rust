@@ -1,6 +1,6 @@
 [package]
 name = "powco"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2018"
 description = "Rust Client for Pow.co HTTP & Websockets APIs"
 homepage = "https://onchain.sv/1PhzehjmBy1AaT5No3NzPfTKYWamGno9Aj"
@@ -16,3 +16,5 @@ bitcoin = { version = "0.27.1" }
 secp256k1 = { version = "0.21.2", features = ["rand", "bitcoin_hashes"] }
 rand = { version = "0.6", features = ["std"] }
 getrandom = "0.2"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
