@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  test:
     docker:
       - image: cimg/rust:1.58.1
     steps:
@@ -12,6 +12,7 @@ jobs:
     docker:
       - image: cimg/rust:1.58.1
     steps:
+      - checkout
       - run:
           name: Build Relase Version 
           command: cargo build --release
@@ -24,12 +25,12 @@ jobs:
 
 workflows:
   version: 2
-  build_and_deploy:
+  test_and_release:
     jobs:
-      - build
+      - test
       - release:
           requires:
-            - build
+            - test
           filters:
             branches:
               only:

@@ -122,9 +122,11 @@ mod powco {
         pub spent: bool,
     }
 
+    type Jobs = Vec<Job>;
+
     #[derive(Serialize, Deserialize, Debug)]
     pub struct ListJobsAPIResponse {
-        jobs: Vec<Job>,
+        jobs: Jobs,
     }
 
     impl Client {
@@ -133,7 +135,7 @@ mod powco {
             self.keys.validate()
         }
 
-        pub async fn list_available_jobs(&self) -> Vec<Job> {
+        pub async fn list_available_jobs(&self) -> Jobs {
             let client = reqwest::Client::new();
             let response = client
                 .get("https://pow.co/api/v1/jobs")
@@ -150,13 +152,13 @@ mod powco {
                         },
                         Err(_) => {
                             println!("Error getting jobs from API");
-                            let result: Vec<Job> = Vec::new();
+                            let result: Jobs = Vec::new();
                             result
                         }
                     }
                 }
                 reqwest::StatusCode::UNAUTHORIZED => {
-                    let result: Vec<Job> = Vec::new();
+                    let result: Jobs = Vec::new();
                     result
                 }
                 other => {
