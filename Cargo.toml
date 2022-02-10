@@ -4,6 +4,7 @@ version = "0.1.0"
 edition = "2018"
 description = "Rust Client for Pow.co HTTP & Websockets APIs"
 homepage = "https://onchain.sv/1PhzehjmBy1AaT5No3NzPfTKYWamGno9Aj"
+license = "OpenBSV"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
